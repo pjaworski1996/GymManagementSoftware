@@ -1,0 +1,899 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="GymManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Administratorzy">
+          <Key>
+            <PropertyRef Name="idAdministrator" />
+          </Key>
+          <Property Name="idAdministrator" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="imie" Type="varchar" MaxLength="20" />
+          <Property Name="nazwisko" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="telefon" Type="varchar" MaxLength="9" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dietetycy">
+          <Key>
+            <PropertyRef Name="idDietetyk" />
+          </Key>
+          <Property Name="idDietetyk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="imie" Type="varchar" MaxLength="20" />
+          <Property Name="nazwisko" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="telefon" Type="varchar" MaxLength="9" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Diety">
+          <Key>
+            <PropertyRef Name="idDieta" />
+          </Key>
+          <Property Name="idDieta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nazwa" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="rodzaj" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="cena" Type="int" />
+        </EntityType>
+        <EntityType Name="Karnety">
+          <Key>
+            <PropertyRef Name="idKarnet" />
+          </Key>
+          <Property Name="idKarnet" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdKlient" Type="int" Nullable="false" />
+          <Property Name="dataWaznosci" Type="date" Nullable="false" />
+          <Property Name="cena" Type="int" />
+        </EntityType>
+        <EntityType Name="Klienci">
+          <Key>
+            <PropertyRef Name="idKlient" />
+          </Key>
+          <Property Name="idKlient" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="imie" Type="varchar" MaxLength="20" />
+          <Property Name="nazwisko" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="telefon" Type="varchar" MaxLength="9" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PracownicyKasowi">
+          <Key>
+            <PropertyRef Name="idPracownikKas" />
+          </Key>
+          <Property Name="idPracownikKas" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="imie" Type="varchar" MaxLength="20" />
+          <Property Name="nazwisko" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="telefon" Type="varchar" MaxLength="9" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Produkty">
+          <Key>
+            <PropertyRef Name="idProdukt" />
+          </Key>
+          <Property Name="idProdukt" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nazwa" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="cena" Type="int" />
+          <Property Name="ilosc" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PrzypisaneDiety">
+          <Key>
+            <PropertyRef Name="idPD" />
+          </Key>
+          <Property Name="idPD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idDieta" Type="int" Nullable="false" />
+          <Property Name="idKlient" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Silownie">
+          <Key>
+            <PropertyRef Name="idSilownia" />
+          </Key>
+          <Property Name="idSilownia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="adres" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sprzety">
+          <Key>
+            <PropertyRef Name="idSprzet" />
+          </Key>
+          <Property Name="idSprzet" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nazwa" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ilosc" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Transakcje">
+          <Key>
+            <PropertyRef Name="idTransakcji" />
+          </Key>
+          <Property Name="idTransakcji" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idProdukt" Type="int" Nullable="false" />
+          <Property Name="idKlient" Type="int" Nullable="false" />
+          <Property Name="data" Type="date" Nullable="false" />
+          <Property Name="cena" Type="int" />
+        </EntityType>
+        <EntityType Name="Trenerzy">
+          <Key>
+            <PropertyRef Name="idTrener" />
+          </Key>
+          <Property Name="idTrener" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="imie" Type="varchar" MaxLength="20" />
+          <Property Name="nazwisko" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="telefon" Type="varchar" MaxLength="9" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Treningi">
+          <Key>
+            <PropertyRef Name="idTrening" />
+          </Key>
+          <Property Name="idTrening" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nazwa" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="dataTreningu" Type="date" Nullable="false" />
+          <Property Name="idTrener" Type="int" Nullable="false" />
+          <Property Name="idSilownia" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Uzytkownicy">
+          <Key>
+            <PropertyRef Name="idUzytkownika" />
+          </Key>
+          <Property Name="idUzytkownika" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="login" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="haslo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="uprawnienia" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="status" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="imie" Type="varchar" MaxLength="20" />
+          <Property Name="nazwisko" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WypozyczeniaSprzetu">
+          <Key>
+            <PropertyRef Name="idWypo" />
+          </Key>
+          <Property Name="idWypo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idSprzet" Type="int" Nullable="false" />
+          <Property Name="idKlient" Type="int" Nullable="false" />
+          <Property Name="data" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ZarezerwowaneTreningi">
+          <Key>
+            <PropertyRef Name="idZT" />
+          </Key>
+          <Property Name="idZT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idTrening" Type="int" Nullable="false" />
+          <Property Name="idKlient" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Karnety__IdKlien__4BAC3F29">
+          <End Role="Klienci" Type="Self.Klienci" Multiplicity="1" />
+          <End Role="Karnety" Type="Self.Karnety" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klienci">
+              <PropertyRef Name="idKlient" />
+            </Principal>
+            <Dependent Role="Karnety">
+              <PropertyRef Name="IdKlient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Przypisan__idDie__5FB337D6">
+          <End Role="Diety" Type="Self.Diety" Multiplicity="1" />
+          <End Role="PrzypisaneDiety" Type="Self.PrzypisaneDiety" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Diety">
+              <PropertyRef Name="idDieta" />
+            </Principal>
+            <Dependent Role="PrzypisaneDiety">
+              <PropertyRef Name="idDieta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Przypisan__idKli__60A75C0F">
+          <End Role="Klienci" Type="Self.Klienci" Multiplicity="1" />
+          <End Role="PrzypisaneDiety" Type="Self.PrzypisaneDiety" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klienci">
+              <PropertyRef Name="idKlient" />
+            </Principal>
+            <Dependent Role="PrzypisaneDiety">
+              <PropertyRef Name="idKlient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transakcj__idKli__6477ECF3">
+          <End Role="Klienci" Type="Self.Klienci" Multiplicity="1" />
+          <End Role="Transakcje" Type="Self.Transakcje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klienci">
+              <PropertyRef Name="idKlient" />
+            </Principal>
+            <Dependent Role="Transakcje">
+              <PropertyRef Name="idKlient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transakcj__idPro__6383C8BA">
+          <End Role="Produkty" Type="Self.Produkty" Multiplicity="1" />
+          <End Role="Transakcje" Type="Self.Transakcje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produkty">
+              <PropertyRef Name="idProdukt" />
+            </Principal>
+            <Dependent Role="Transakcje">
+              <PropertyRef Name="idProdukt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Treningi__idSilo__59063A47">
+          <End Role="Silownie" Type="Self.Silownie" Multiplicity="1" />
+          <End Role="Treningi" Type="Self.Treningi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Silownie">
+              <PropertyRef Name="idSilownia" />
+            </Principal>
+            <Dependent Role="Treningi">
+              <PropertyRef Name="idSilownia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Treningi__idTren__5812160E">
+          <End Role="Trenerzy" Type="Self.Trenerzy" Multiplicity="1" />
+          <End Role="Treningi" Type="Self.Treningi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trenerzy">
+              <PropertyRef Name="idTrener" />
+            </Principal>
+            <Dependent Role="Treningi">
+              <PropertyRef Name="idTrener" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Wypozycze__idKli__68487DD7">
+          <End Role="Klienci" Type="Self.Klienci" Multiplicity="1" />
+          <End Role="WypozyczeniaSprzetu" Type="Self.WypozyczeniaSprzetu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klienci">
+              <PropertyRef Name="idKlient" />
+            </Principal>
+            <Dependent Role="WypozyczeniaSprzetu">
+              <PropertyRef Name="idKlient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Wypozycze__idSpr__6754599E">
+          <End Role="Sprzety" Type="Self.Sprzety" Multiplicity="1" />
+          <End Role="WypozyczeniaSprzetu" Type="Self.WypozyczeniaSprzetu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sprzety">
+              <PropertyRef Name="idSprzet" />
+            </Principal>
+            <Dependent Role="WypozyczeniaSprzetu">
+              <PropertyRef Name="idSprzet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Zarezerwo__idKli__5CD6CB2B">
+          <End Role="Klienci" Type="Self.Klienci" Multiplicity="1" />
+          <End Role="ZarezerwowaneTreningi" Type="Self.ZarezerwowaneTreningi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klienci">
+              <PropertyRef Name="idKlient" />
+            </Principal>
+            <Dependent Role="ZarezerwowaneTreningi">
+              <PropertyRef Name="idKlient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Zarezerwo__idTre__5BE2A6F2">
+          <End Role="Treningi" Type="Self.Treningi" Multiplicity="1" />
+          <End Role="ZarezerwowaneTreningi" Type="Self.ZarezerwowaneTreningi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Treningi">
+              <PropertyRef Name="idTrening" />
+            </Principal>
+            <Dependent Role="ZarezerwowaneTreningi">
+              <PropertyRef Name="idTrening" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GymManagementModelStoreContainer">
+          <EntitySet Name="Administratorzy" EntityType="Self.Administratorzy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dietetycy" EntityType="Self.Dietetycy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Diety" EntityType="Self.Diety" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Karnety" EntityType="Self.Karnety" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Klienci" EntityType="Self.Klienci" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PracownicyKasowi" EntityType="Self.PracownicyKasowi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Produkty" EntityType="Self.Produkty" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PrzypisaneDiety" EntityType="Self.PrzypisaneDiety" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Silownie" EntityType="Self.Silownie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sprzety" EntityType="Self.Sprzety" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Transakcje" EntityType="Self.Transakcje" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Trenerzy" EntityType="Self.Trenerzy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Treningi" EntityType="Self.Treningi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Uzytkownicy" EntityType="Self.Uzytkownicy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WypozyczeniaSprzetu" EntityType="Self.WypozyczeniaSprzetu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ZarezerwowaneTreningi" EntityType="Self.ZarezerwowaneTreningi" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Karnety__IdKlien__4BAC3F29" Association="Self.FK__Karnety__IdKlien__4BAC3F29">
+            <End Role="Klienci" EntitySet="Klienci" />
+            <End Role="Karnety" EntitySet="Karnety" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Przypisan__idDie__5FB337D6" Association="Self.FK__Przypisan__idDie__5FB337D6">
+            <End Role="Diety" EntitySet="Diety" />
+            <End Role="PrzypisaneDiety" EntitySet="PrzypisaneDiety" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Przypisan__idKli__60A75C0F" Association="Self.FK__Przypisan__idKli__60A75C0F">
+            <End Role="Klienci" EntitySet="Klienci" />
+            <End Role="PrzypisaneDiety" EntitySet="PrzypisaneDiety" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transakcj__idKli__6477ECF3" Association="Self.FK__Transakcj__idKli__6477ECF3">
+            <End Role="Klienci" EntitySet="Klienci" />
+            <End Role="Transakcje" EntitySet="Transakcje" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transakcj__idPro__6383C8BA" Association="Self.FK__Transakcj__idPro__6383C8BA">
+            <End Role="Produkty" EntitySet="Produkty" />
+            <End Role="Transakcje" EntitySet="Transakcje" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Treningi__idSilo__59063A47" Association="Self.FK__Treningi__idSilo__59063A47">
+            <End Role="Silownie" EntitySet="Silownie" />
+            <End Role="Treningi" EntitySet="Treningi" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Treningi__idTren__5812160E" Association="Self.FK__Treningi__idTren__5812160E">
+            <End Role="Trenerzy" EntitySet="Trenerzy" />
+            <End Role="Treningi" EntitySet="Treningi" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Wypozycze__idKli__68487DD7" Association="Self.FK__Wypozycze__idKli__68487DD7">
+            <End Role="Klienci" EntitySet="Klienci" />
+            <End Role="WypozyczeniaSprzetu" EntitySet="WypozyczeniaSprzetu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Wypozycze__idSpr__6754599E" Association="Self.FK__Wypozycze__idSpr__6754599E">
+            <End Role="Sprzety" EntitySet="Sprzety" />
+            <End Role="WypozyczeniaSprzetu" EntitySet="WypozyczeniaSprzetu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Zarezerwo__idKli__5CD6CB2B" Association="Self.FK__Zarezerwo__idKli__5CD6CB2B">
+            <End Role="Klienci" EntitySet="Klienci" />
+            <End Role="ZarezerwowaneTreningi" EntitySet="ZarezerwowaneTreningi" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Zarezerwo__idTre__5BE2A6F2" Association="Self.FK__Zarezerwo__idTre__5BE2A6F2">
+            <End Role="Treningi" EntitySet="Treningi" />
+            <End Role="ZarezerwowaneTreningi" EntitySet="ZarezerwowaneTreningi" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GymManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Administratorzy">
+          <Key>
+            <PropertyRef Name="idAdministrator" />
+          </Key>
+          <Property Name="idAdministrator" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="imie" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="nazwisko" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefon" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dietetycy">
+          <Key>
+            <PropertyRef Name="idDietetyk" />
+          </Key>
+          <Property Name="idDietetyk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="imie" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="nazwisko" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefon" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Diety">
+          <Key>
+            <PropertyRef Name="idDieta" />
+          </Key>
+          <Property Name="idDieta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nazwa" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="rodzaj" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cena" Type="Int32" />
+          <NavigationProperty Name="PrzypisaneDiety" Relationship="Self.FK__Przypisan__idDie__5FB337D6" FromRole="Diety" ToRole="PrzypisaneDiety" />
+        </EntityType>
+        <EntityType Name="Karnety">
+          <Key>
+            <PropertyRef Name="idKarnet" />
+          </Key>
+          <Property Name="idKarnet" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdKlient" Type="Int32" Nullable="false" />
+          <Property Name="dataWaznosci" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="cena" Type="Int32" />
+          <NavigationProperty Name="Klienci" Relationship="Self.FK__Karnety__IdKlien__4AB81AF0" FromRole="Karnety" ToRole="Klienci" />
+        </EntityType>
+        <EntityType Name="Klienci">
+          <Key>
+            <PropertyRef Name="idKlient" />
+          </Key>
+          <Property Name="idKlient" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="imie" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="nazwisko" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefon" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Karnety" Relationship="Self.FK__Karnety__IdKlien__4AB81AF0" FromRole="Klienci" ToRole="Karnety" />
+          <NavigationProperty Name="PrzypisaneDiety" Relationship="Self.FK__Przypisan__idKli__60A75C0F" FromRole="Klienci" ToRole="PrzypisaneDiety" />
+          <NavigationProperty Name="Transakcje" Relationship="Self.FK__Transakcj__idKli__656C112C" FromRole="Klienci" ToRole="Transakcje" />
+          <NavigationProperty Name="WypozyczeniaSprzetu" Relationship="Self.FK__Wypozycze__idKli__6A30C649" FromRole="Klienci" ToRole="WypozyczeniaSprzetu" />
+          <NavigationProperty Name="ZarezerwowaneTreningi" Relationship="Self.FK__Zarezerwo__idKli__5CD6CB2B" FromRole="Klienci" ToRole="ZarezerwowaneTreningi" />
+        </EntityType>
+        <EntityType Name="PracownicyKasowi">
+          <Key>
+            <PropertyRef Name="idPracownikKas" />
+          </Key>
+          <Property Name="idPracownikKas" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="imie" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="nazwisko" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefon" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Produkty">
+          <Key>
+            <PropertyRef Name="idProdukt" />
+          </Key>
+          <Property Name="idProdukt" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nazwa" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cena" Type="Int32" />
+          <Property Name="ilosc" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Transakcje" Relationship="Self.FK__Transakcj__idPro__6477ECF3" FromRole="Produkty" ToRole="Transakcje" />
+        </EntityType>
+        <EntityType Name="PrzypisaneDiety">
+          <Key>
+            <PropertyRef Name="idPD" />
+          </Key>
+          <Property Name="idPD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idDieta" Type="Int32" Nullable="false" />
+          <Property Name="idKlient" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Diety" Relationship="Self.FK__Przypisan__idDie__5FB337D6" FromRole="PrzypisaneDiety" ToRole="Diety" />
+          <NavigationProperty Name="Klienci" Relationship="Self.FK__Przypisan__idKli__60A75C0F" FromRole="PrzypisaneDiety" ToRole="Klienci" />
+        </EntityType>
+        <EntityType Name="Silownie">
+          <Key>
+            <PropertyRef Name="idSilownia" />
+          </Key>
+          <Property Name="idSilownia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="adres" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Treningi" Relationship="Self.FK__Treningi__idSilo__5165187F" FromRole="Silownie" ToRole="Treningi" />
+        </EntityType>
+        <EntityType Name="Sprzety">
+          <Key>
+            <PropertyRef Name="idSprzet" />
+          </Key>
+          <Property Name="idSprzet" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nazwa" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ilosc" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="WypozyczeniaSprzetu" Relationship="Self.FK__Wypozycze__idSpr__693CA210" FromRole="Sprzety" ToRole="WypozyczeniaSprzetu" />
+        </EntityType>
+        <EntityType Name="Transakcje">
+          <Key>
+            <PropertyRef Name="idTransakcji" />
+          </Key>
+          <Property Name="idTransakcji" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idProdukt" Type="Int32" Nullable="false" />
+          <Property Name="idKlient" Type="Int32" Nullable="false" />
+          <Property Name="data" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="cena" Type="Int32" />
+          <NavigationProperty Name="Klienci" Relationship="Self.FK__Transakcj__idKli__656C112C" FromRole="Transakcje" ToRole="Klienci" />
+          <NavigationProperty Name="Produkty" Relationship="Self.FK__Transakcj__idPro__6477ECF3" FromRole="Transakcje" ToRole="Produkty" />
+        </EntityType>
+        <EntityType Name="Trenerzy">
+          <Key>
+            <PropertyRef Name="idTrener" />
+          </Key>
+          <Property Name="idTrener" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="imie" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="nazwisko" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefon" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Treningi" Relationship="Self.FK__Treningi__idTren__5070F446" FromRole="Trenerzy" ToRole="Treningi" />
+        </EntityType>
+        <EntityType Name="Treningi">
+          <Key>
+            <PropertyRef Name="idTrening" />
+          </Key>
+          <Property Name="idTrening" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nazwa" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dataTreningu" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="idTrener" Type="Int32" Nullable="false" />
+          <Property Name="idSilownia" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Silownie" Relationship="Self.FK__Treningi__idSilo__5165187F" FromRole="Treningi" ToRole="Silownie" />
+          <NavigationProperty Name="Trenerzy" Relationship="Self.FK__Treningi__idTren__5070F446" FromRole="Treningi" ToRole="Trenerzy" />
+          <NavigationProperty Name="ZarezerwowaneTreningi" Relationship="Self.FK__Zarezerwo__idTre__5BE2A6F2" FromRole="Treningi" ToRole="ZarezerwowaneTreningi" />
+        </EntityType>
+        <EntityType Name="Uzytkownicy">
+          <Key>
+            <PropertyRef Name="idUzytkownika" />
+          </Key>
+          <Property Name="idUzytkownika" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="login" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="haslo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="uprawnienia" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="imie" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="nazwisko" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="WypozyczeniaSprzetu">
+          <Key>
+            <PropertyRef Name="idWypo" />
+          </Key>
+          <Property Name="idWypo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idSprzet" Type="Int32" Nullable="false" />
+          <Property Name="idKlient" Type="Int32" Nullable="false" />
+          <Property Name="data" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Klienci" Relationship="Self.FK__Wypozycze__idKli__6A30C649" FromRole="WypozyczeniaSprzetu" ToRole="Klienci" />
+          <NavigationProperty Name="Sprzety" Relationship="Self.FK__Wypozycze__idSpr__693CA210" FromRole="WypozyczeniaSprzetu" ToRole="Sprzety" />
+        </EntityType>
+        <EntityType Name="ZarezerwowaneTreningi">
+          <Key>
+            <PropertyRef Name="idZT" />
+          </Key>
+          <Property Name="idZT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idTrening" Type="Int32" Nullable="false" />
+          <Property Name="idKlient" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Klienci" Relationship="Self.FK__Zarezerwo__idKli__5CD6CB2B" FromRole="ZarezerwowaneTreningi" ToRole="Klienci" />
+          <NavigationProperty Name="Treningi" Relationship="Self.FK__Zarezerwo__idTre__5BE2A6F2" FromRole="ZarezerwowaneTreningi" ToRole="Treningi" />
+        </EntityType>
+        <Association Name="FK__Przypisan__idDie__5FB337D6">
+          <End Role="Diety" Type="Self.Diety" Multiplicity="1" />
+          <End Role="PrzypisaneDiety" Type="Self.PrzypisaneDiety" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Diety">
+              <PropertyRef Name="idDieta" />
+            </Principal>
+            <Dependent Role="PrzypisaneDiety">
+              <PropertyRef Name="idDieta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Karnety__IdKlien__4AB81AF0">
+          <End Role="Klienci" Type="Self.Klienci" Multiplicity="1" />
+          <End Role="Karnety" Type="Self.Karnety" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klienci">
+              <PropertyRef Name="idKlient" />
+            </Principal>
+            <Dependent Role="Karnety">
+              <PropertyRef Name="IdKlient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Przypisan__idKli__60A75C0F">
+          <End Role="Klienci" Type="Self.Klienci" Multiplicity="1" />
+          <End Role="PrzypisaneDiety" Type="Self.PrzypisaneDiety" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klienci">
+              <PropertyRef Name="idKlient" />
+            </Principal>
+            <Dependent Role="PrzypisaneDiety">
+              <PropertyRef Name="idKlient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transakcj__idKli__656C112C">
+          <End Role="Klienci" Type="Self.Klienci" Multiplicity="1" />
+          <End Role="Transakcje" Type="Self.Transakcje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klienci">
+              <PropertyRef Name="idKlient" />
+            </Principal>
+            <Dependent Role="Transakcje">
+              <PropertyRef Name="idKlient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Wypozycze__idKli__6A30C649">
+          <End Role="Klienci" Type="Self.Klienci" Multiplicity="1" />
+          <End Role="WypozyczeniaSprzetu" Type="Self.WypozyczeniaSprzetu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klienci">
+              <PropertyRef Name="idKlient" />
+            </Principal>
+            <Dependent Role="WypozyczeniaSprzetu">
+              <PropertyRef Name="idKlient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Zarezerwo__idKli__5CD6CB2B">
+          <End Role="Klienci" Type="Self.Klienci" Multiplicity="1" />
+          <End Role="ZarezerwowaneTreningi" Type="Self.ZarezerwowaneTreningi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klienci">
+              <PropertyRef Name="idKlient" />
+            </Principal>
+            <Dependent Role="ZarezerwowaneTreningi">
+              <PropertyRef Name="idKlient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transakcj__idPro__6477ECF3">
+          <End Role="Produkty" Type="Self.Produkty" Multiplicity="1" />
+          <End Role="Transakcje" Type="Self.Transakcje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Produkty">
+              <PropertyRef Name="idProdukt" />
+            </Principal>
+            <Dependent Role="Transakcje">
+              <PropertyRef Name="idProdukt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Treningi__idSilo__5165187F">
+          <End Role="Silownie" Type="Self.Silownie" Multiplicity="1" />
+          <End Role="Treningi" Type="Self.Treningi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Silownie">
+              <PropertyRef Name="idSilownia" />
+            </Principal>
+            <Dependent Role="Treningi">
+              <PropertyRef Name="idSilownia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Wypozycze__idSpr__693CA210">
+          <End Role="Sprzety" Type="Self.Sprzety" Multiplicity="1" />
+          <End Role="WypozyczeniaSprzetu" Type="Self.WypozyczeniaSprzetu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sprzety">
+              <PropertyRef Name="idSprzet" />
+            </Principal>
+            <Dependent Role="WypozyczeniaSprzetu">
+              <PropertyRef Name="idSprzet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Treningi__idTren__5070F446">
+          <End Role="Trenerzy" Type="Self.Trenerzy" Multiplicity="1" />
+          <End Role="Treningi" Type="Self.Treningi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trenerzy">
+              <PropertyRef Name="idTrener" />
+            </Principal>
+            <Dependent Role="Treningi">
+              <PropertyRef Name="idTrener" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Zarezerwo__idTre__5BE2A6F2">
+          <End Role="Treningi" Type="Self.Treningi" Multiplicity="1" />
+          <End Role="ZarezerwowaneTreningi" Type="Self.ZarezerwowaneTreningi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Treningi">
+              <PropertyRef Name="idTrening" />
+            </Principal>
+            <Dependent Role="ZarezerwowaneTreningi">
+              <PropertyRef Name="idTrening" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GymManagementEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Administratorzy" EntityType="Self.Administratorzy" />
+          <EntitySet Name="Dietetycy" EntityType="Self.Dietetycy" />
+          <EntitySet Name="Diety" EntityType="Self.Diety" />
+          <EntitySet Name="Karnety" EntityType="Self.Karnety" />
+          <EntitySet Name="Klienci" EntityType="Self.Klienci" />
+          <EntitySet Name="PracownicyKasowi" EntityType="Self.PracownicyKasowi" />
+          <EntitySet Name="Produkty" EntityType="Self.Produkty" />
+          <EntitySet Name="PrzypisaneDiety" EntityType="Self.PrzypisaneDiety" />
+          <EntitySet Name="Silownie" EntityType="Self.Silownie" />
+          <EntitySet Name="Sprzety" EntityType="Self.Sprzety" />
+          <EntitySet Name="Transakcje" EntityType="Self.Transakcje" />
+          <EntitySet Name="Trenerzy" EntityType="Self.Trenerzy" />
+          <EntitySet Name="Treningi" EntityType="Self.Treningi" />
+          <EntitySet Name="Uzytkownicy" EntityType="Self.Uzytkownicy" />
+          <EntitySet Name="WypozyczeniaSprzetu" EntityType="Self.WypozyczeniaSprzetu" />
+          <EntitySet Name="ZarezerwowaneTreningi" EntityType="Self.ZarezerwowaneTreningi" />
+          <AssociationSet Name="FK__Przypisan__idDie__5FB337D6" Association="Self.FK__Przypisan__idDie__5FB337D6">
+            <End Role="Diety" EntitySet="Diety" />
+            <End Role="PrzypisaneDiety" EntitySet="PrzypisaneDiety" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Karnety__IdKlien__4AB81AF0" Association="Self.FK__Karnety__IdKlien__4AB81AF0">
+            <End Role="Klienci" EntitySet="Klienci" />
+            <End Role="Karnety" EntitySet="Karnety" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Przypisan__idKli__60A75C0F" Association="Self.FK__Przypisan__idKli__60A75C0F">
+            <End Role="Klienci" EntitySet="Klienci" />
+            <End Role="PrzypisaneDiety" EntitySet="PrzypisaneDiety" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transakcj__idKli__656C112C" Association="Self.FK__Transakcj__idKli__656C112C">
+            <End Role="Klienci" EntitySet="Klienci" />
+            <End Role="Transakcje" EntitySet="Transakcje" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Wypozycze__idKli__6A30C649" Association="Self.FK__Wypozycze__idKli__6A30C649">
+            <End Role="Klienci" EntitySet="Klienci" />
+            <End Role="WypozyczeniaSprzetu" EntitySet="WypozyczeniaSprzetu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Zarezerwo__idKli__5CD6CB2B" Association="Self.FK__Zarezerwo__idKli__5CD6CB2B">
+            <End Role="Klienci" EntitySet="Klienci" />
+            <End Role="ZarezerwowaneTreningi" EntitySet="ZarezerwowaneTreningi" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transakcj__idPro__6477ECF3" Association="Self.FK__Transakcj__idPro__6477ECF3">
+            <End Role="Produkty" EntitySet="Produkty" />
+            <End Role="Transakcje" EntitySet="Transakcje" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Treningi__idSilo__5165187F" Association="Self.FK__Treningi__idSilo__5165187F">
+            <End Role="Silownie" EntitySet="Silownie" />
+            <End Role="Treningi" EntitySet="Treningi" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Wypozycze__idSpr__693CA210" Association="Self.FK__Wypozycze__idSpr__693CA210">
+            <End Role="Sprzety" EntitySet="Sprzety" />
+            <End Role="WypozyczeniaSprzetu" EntitySet="WypozyczeniaSprzetu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Treningi__idTren__5070F446" Association="Self.FK__Treningi__idTren__5070F446">
+            <End Role="Trenerzy" EntitySet="Trenerzy" />
+            <End Role="Treningi" EntitySet="Treningi" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Zarezerwo__idTre__5BE2A6F2" Association="Self.FK__Zarezerwo__idTre__5BE2A6F2">
+            <End Role="Treningi" EntitySet="Treningi" />
+            <End Role="ZarezerwowaneTreningi" EntitySet="ZarezerwowaneTreningi" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GymManagementModelStoreContainer" CdmEntityContainer="GymManagementEntities">
+          <EntitySetMapping Name="Administratorzy">
+            <EntityTypeMapping TypeName="GymManagementModel.Administratorzy">
+              <MappingFragment StoreEntitySet="Administratorzy">
+                <ScalarProperty Name="idAdministrator" ColumnName="idAdministrator" />
+                <ScalarProperty Name="imie" ColumnName="imie" />
+                <ScalarProperty Name="nazwisko" ColumnName="nazwisko" />
+                <ScalarProperty Name="telefon" ColumnName="telefon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dietetycy">
+            <EntityTypeMapping TypeName="GymManagementModel.Dietetycy">
+              <MappingFragment StoreEntitySet="Dietetycy">
+                <ScalarProperty Name="idDietetyk" ColumnName="idDietetyk" />
+                <ScalarProperty Name="imie" ColumnName="imie" />
+                <ScalarProperty Name="nazwisko" ColumnName="nazwisko" />
+                <ScalarProperty Name="telefon" ColumnName="telefon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Diety">
+            <EntityTypeMapping TypeName="GymManagementModel.Diety">
+              <MappingFragment StoreEntitySet="Diety">
+                <ScalarProperty Name="idDieta" ColumnName="idDieta" />
+                <ScalarProperty Name="nazwa" ColumnName="nazwa" />
+                <ScalarProperty Name="rodzaj" ColumnName="rodzaj" />
+                <ScalarProperty Name="cena" ColumnName="cena" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Karnety">
+            <EntityTypeMapping TypeName="GymManagementModel.Karnety">
+              <MappingFragment StoreEntitySet="Karnety">
+                <ScalarProperty Name="idKarnet" ColumnName="idKarnet" />
+                <ScalarProperty Name="IdKlient" ColumnName="IdKlient" />
+                <ScalarProperty Name="dataWaznosci" ColumnName="dataWaznosci" />
+                <ScalarProperty Name="cena" ColumnName="cena" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Klienci">
+            <EntityTypeMapping TypeName="GymManagementModel.Klienci">
+              <MappingFragment StoreEntitySet="Klienci">
+                <ScalarProperty Name="idKlient" ColumnName="idKlient" />
+                <ScalarProperty Name="imie" ColumnName="imie" />
+                <ScalarProperty Name="nazwisko" ColumnName="nazwisko" />
+                <ScalarProperty Name="telefon" ColumnName="telefon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PracownicyKasowi">
+            <EntityTypeMapping TypeName="GymManagementModel.PracownicyKasowi">
+              <MappingFragment StoreEntitySet="PracownicyKasowi">
+                <ScalarProperty Name="idPracownikKas" ColumnName="idPracownikKas" />
+                <ScalarProperty Name="imie" ColumnName="imie" />
+                <ScalarProperty Name="nazwisko" ColumnName="nazwisko" />
+                <ScalarProperty Name="telefon" ColumnName="telefon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Produkty">
+            <EntityTypeMapping TypeName="GymManagementModel.Produkty">
+              <MappingFragment StoreEntitySet="Produkty">
+                <ScalarProperty Name="idProdukt" ColumnName="idProdukt" />
+                <ScalarProperty Name="nazwa" ColumnName="nazwa" />
+                <ScalarProperty Name="cena" ColumnName="cena" />
+                <ScalarProperty Name="ilosc" ColumnName="ilosc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PrzypisaneDiety">
+            <EntityTypeMapping TypeName="GymManagementModel.PrzypisaneDiety">
+              <MappingFragment StoreEntitySet="PrzypisaneDiety">
+                <ScalarProperty Name="idPD" ColumnName="idPD" />
+                <ScalarProperty Name="idDieta" ColumnName="idDieta" />
+                <ScalarProperty Name="idKlient" ColumnName="idKlient" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Silownie">
+            <EntityTypeMapping TypeName="GymManagementModel.Silownie">
+              <MappingFragment StoreEntitySet="Silownie">
+                <ScalarProperty Name="idSilownia" ColumnName="idSilownia" />
+                <ScalarProperty Name="adres" ColumnName="adres" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sprzety">
+            <EntityTypeMapping TypeName="GymManagementModel.Sprzety">
+              <MappingFragment StoreEntitySet="Sprzety">
+                <ScalarProperty Name="idSprzet" ColumnName="idSprzet" />
+                <ScalarProperty Name="nazwa" ColumnName="nazwa" />
+                <ScalarProperty Name="ilosc" ColumnName="ilosc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transakcje">
+            <EntityTypeMapping TypeName="GymManagementModel.Transakcje">
+              <MappingFragment StoreEntitySet="Transakcje">
+                <ScalarProperty Name="idTransakcji" ColumnName="idTransakcji" />
+                <ScalarProperty Name="idProdukt" ColumnName="idProdukt" />
+                <ScalarProperty Name="idKlient" ColumnName="idKlient" />
+                <ScalarProperty Name="data" ColumnName="data" />
+                <ScalarProperty Name="cena" ColumnName="cena" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trenerzy">
+            <EntityTypeMapping TypeName="GymManagementModel.Trenerzy">
+              <MappingFragment StoreEntitySet="Trenerzy">
+                <ScalarProperty Name="idTrener" ColumnName="idTrener" />
+                <ScalarProperty Name="imie" ColumnName="imie" />
+                <ScalarProperty Name="nazwisko" ColumnName="nazwisko" />
+                <ScalarProperty Name="telefon" ColumnName="telefon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Treningi">
+            <EntityTypeMapping TypeName="GymManagementModel.Treningi">
+              <MappingFragment StoreEntitySet="Treningi">
+                <ScalarProperty Name="idTrening" ColumnName="idTrening" />
+                <ScalarProperty Name="nazwa" ColumnName="nazwa" />
+                <ScalarProperty Name="dataTreningu" ColumnName="dataTreningu" />
+                <ScalarProperty Name="idTrener" ColumnName="idTrener" />
+                <ScalarProperty Name="idSilownia" ColumnName="idSilownia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Uzytkownicy">
+            <EntityTypeMapping TypeName="GymManagementModel.Uzytkownicy">
+              <MappingFragment StoreEntitySet="Uzytkownicy">
+                <ScalarProperty Name="nazwisko" ColumnName="nazwisko" />
+                <ScalarProperty Name="imie" ColumnName="imie" />
+                <ScalarProperty Name="idUzytkownika" ColumnName="idUzytkownika" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="haslo" ColumnName="haslo" />
+                <ScalarProperty Name="uprawnienia" ColumnName="uprawnienia" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WypozyczeniaSprzetu">
+            <EntityTypeMapping TypeName="GymManagementModel.WypozyczeniaSprzetu">
+              <MappingFragment StoreEntitySet="WypozyczeniaSprzetu">
+                <ScalarProperty Name="idWypo" ColumnName="idWypo" />
+                <ScalarProperty Name="idSprzet" ColumnName="idSprzet" />
+                <ScalarProperty Name="idKlient" ColumnName="idKlient" />
+                <ScalarProperty Name="data" ColumnName="data" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ZarezerwowaneTreningi">
+            <EntityTypeMapping TypeName="GymManagementModel.ZarezerwowaneTreningi">
+              <MappingFragment StoreEntitySet="ZarezerwowaneTreningi">
+                <ScalarProperty Name="idZT" ColumnName="idZT" />
+                <ScalarProperty Name="idTrening" ColumnName="idTrening" />
+                <ScalarProperty Name="idKlient" ColumnName="idKlient" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

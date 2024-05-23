@@ -1,0 +1,95 @@
+﻿<Window x:Class="GymManagement.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Logowanie" Background="#FFC5BFBF" Height="900" Width="1100" ResizeMode="NoResize">
+    <Window.Resources>
+        <!-- Animacja zmiany przezroczystości -->
+        <Storyboard x:Key="ButtonPressedAnimation">
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0.6" Duration="0:0:0.1"/>
+        </Storyboard>
+        <Storyboard x:Key="ButtonReleasedAnimation">
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.1"/>
+        </Storyboard>
+    </Window.Resources>
+    <Grid>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="-20,0,20,20">
+            <Button x:Name="MainWindowExitButton" Content="Wyjście" Style="{StaticResource ButtonSmall}" Click="MainWindowExitButton_Click">
+                <Button.Triggers>
+                    <!-- Trigger dla naciśnięcia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+                    </EventTrigger>
+                    <!-- Trigger dla zwolnienia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+        </StackPanel>
+
+        <TextBlock Text="GymManagement Company" FontSize="20" Margin="577,60,0,748"  TextAlignment="Center"/>
+        <Image Source="./NewFolder1/logo.png" Grid.Row="0" Margin="62,38,842,650" RenderTransformOrigin="0.247,1.624"/>
+        <Grid Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Login:" FontSize="28" FontWeight="Bold" Margin="0 0 0 10" Grid.Row="0" HorizontalAlignment="Left"/>
+            <TextBox x:Name="txtUsername" Margin="0 0 0 20" Height="60" FontSize="28" Grid.Row="1" MinWidth="400" VerticalContentAlignment="Center" MaxLength="20"/>
+
+            <TextBlock Text="Hasło:" FontSize="28" FontWeight="Bold" Margin="0 0 0 10" Grid.Row="2" HorizontalAlignment="Left"/>
+            <PasswordBox x:Name="txtPassword" Margin="0 0 0 20" Height="60" FontSize="28" Grid.Row="3" MinWidth="400" VerticalContentAlignment="Center" MaxLength="20"/>
+
+            <!-- Przycisk Logowania -->
+            <Button x:Name="Login" Content="Zaloguj" Style="{StaticResource Button}" Grid.Row="4" Width="200" Click="Login_Click">
+                <Button.Triggers>
+                    <!-- Trigger dla naciśnięcia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0.6" Duration="0:0:0.1"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <!-- Trigger dla zwolnienia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.1"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+
+            <!-- Przycisk Rejestracji -->
+            <Button x:Name="Register" Content="Zarejestruj" Style="{StaticResource ButtonSmall}" Grid.Row="6" Margin="132,73,132,-73" Click="Register_Click">
+                <Button.Triggers>
+                    <!-- Trigger dla naciśnięcia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0.6" Duration="0:0:0.1"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <!-- Trigger dla zwolnienia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.1"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+        </Grid>
+    </Grid>
+</Window>

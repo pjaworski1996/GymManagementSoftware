@@ -1,0 +1,76 @@
+﻿<Window x:Class="GymManagement.ChangeUserWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:av="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="av"
+        Title="Modyfikuj Użytkownika" Background="#FFC5BFBF" Height="1000" Width="1600" ResizeMode="NoResize">
+
+    <Window.Resources>
+        <!-- Animacja zmiany przezroczystości -->
+        <Storyboard x:Key="ButtonPressedAnimation">
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0.6" Duration="0:0:0.1"/>
+        </Storyboard>
+        <Storyboard x:Key="ButtonReleasedAnimation">
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.1"/>
+        </Storyboard>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="GymManagement Company" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="40" Margin="879,57,0,0"  TextAlignment="Center"/>
+
+        <!-- Logo firmy -->
+        <Image Source="./NewFolder1/logo.png" Margin="50,28,1315,722"/>
+
+        <!-- Panel dodawania diety -->
+        <StackPanel Margin="316,400,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="304">
+
+            <TextBlock Text="Uprawnienia:" FontSize="27"/>
+            <ComboBox x:Name="ChangeUserRoleComboBox" FontSize="27" SelectedIndex="0">
+                <ComboBoxItem Content="Klient"/>
+                <ComboBoxItem Content="Trener"/>
+                <ComboBoxItem Content="Dietetyk"/>
+                <ComboBoxItem Content="Kasjer"/>
+                <ComboBoxItem Content="Administrator"/>
+            </ComboBox>
+
+            <TextBlock Text="Status:" FontSize="27"/>
+            <ComboBox x:Name="ChangeUserStatusComboBox" FontSize="27" SelectedIndex="0">
+                <ComboBoxItem Content="Aktywny"/>
+                <ComboBoxItem Content="Nieaktywny"/>
+            </ComboBox>
+        </StackPanel>
+
+        <!-- Przycisk Dodaj -->
+        <Button x:Name="ChangeUserChangeButton" Content="Modyfikuj" Style="{StaticResource Button}" HorizontalAlignment="Left"  Margin="966,492,0,413" Grid.Row="0" Click="ChangeUserChangeButton_Click" >
+            <Button.Triggers>
+                <!-- Trigger dla naciśnięcia przycisku -->
+                <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                    <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+                </EventTrigger>
+                <!-- Trigger dla zwolnienia przycisku -->
+                <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                    <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+                </EventTrigger>
+            </Button.Triggers>
+        </Button>
+
+        <!-- Przycisk Powrót -->
+        <Button x:Name="ChangeUserBack" Content="Powrót" Style="{StaticResource Button}" HorizontalAlignment="Center" Margin="0,848,0,56" Grid.Row="0" Click="ChangeUserBack_Click">
+            <Button.Triggers>
+                <!-- Trigger dla naciśnięcia przycisku -->
+                <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                    <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+                </EventTrigger>
+                <!-- Trigger dla zwolnienia przycisku -->
+                <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                    <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+                </EventTrigger>
+            </Button.Triggers>
+        </Button>
+
+    </Grid>
+</Window>

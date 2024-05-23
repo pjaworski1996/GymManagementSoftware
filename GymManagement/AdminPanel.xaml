@@ -1,0 +1,240 @@
+﻿<Window x:Class="GymManagement.AdminPanel"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:av="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="av"
+        Title="Panel Administratora" Background="#FFC5BFBF" Height="1000" Width="2200" ResizeMode="NoResize" Loaded="Window_Loaded">
+    <Window.Resources>
+        <!-- Animacja zmiany przezroczystości -->
+        <Storyboard x:Key="ButtonPressedAnimation">
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0.6" Duration="0:0:0.1"/>
+        </Storyboard>
+        <Storyboard x:Key="ButtonReleasedAnimation">
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.1"/>
+        </Storyboard>
+    </Window.Resources>
+    <Grid>
+        <!-- Nazwa firmy -->
+        <TextBlock Text="GymManagement Company" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="40" Margin="0,28,0,0"  TextAlignment="Center" RenderTransformOrigin="0.055,0.771"/>
+
+        <!-- Logo -->
+        <Image Source="./NewFolder1/logo.png" Grid.Row="0" Margin="50,28,1852,722"/>
+
+        <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,100,20,0" Width="618">
+            <TextBlock x:Name="AdminImieTextBox" Margin="10" FontSize="26" Width="598" IsEnabled="False" Background="#FFC5BFBF" TextAlignment="Right"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-28,290,0,0">
+            <TextBlock Text="Użytkownik:" VerticalAlignment="Center" Margin="0,0,10,0" FontSize="36"/>
+            <Button x:Name="AdminChangeUserButton" Content="Modyfikuj" Style="{StaticResource Button}" Click="AdminChangeUserButton_Click">
+                <Button.Triggers>
+                    <!-- Trigger dla naciśnięcia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+                    </EventTrigger>
+                    <!-- Trigger dla zwolnienia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+            <Button Margin="100,0,0,0" Visibility="Hidden"/>
+            <TextBlock Text="Siłownia:" VerticalAlignment="Center" Margin="0,0,10,0" FontSize="36"/>
+            <Button x:Name="AdminAddGymButton" Content="Dodaj" Style="{StaticResource Button}" Click="AdminAddGymButton_Click">
+                <Button.Triggers>
+                    <!-- Trigger dla naciśnięcia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+                    </EventTrigger>
+                    <!-- Trigger dla zwolnienia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+
+            <Button x:Name="AdminChangeGymButton" Content="Modyfikuj" Style="{StaticResource Button}" Click="AdminChangeGymButton_Click">
+                <Button.Triggers>
+                    <!-- Trigger dla naciśnięcia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+                    </EventTrigger>
+                    <!-- Trigger dla zwolnienia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+            <Button x:Name="AdminDeleteGymButton" Content="Usuń" Style="{StaticResource Button}" Click="AdminDeleteGymButton_Click">
+                <Button.Triggers>
+                    <!-- Trigger dla naciśnięcia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+                    </EventTrigger>
+                    <!-- Trigger dla zwolnienia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="-20,20,20,0">
+            <Button x:Name="AdminLogoffButton" Content="Wyloguj" Style="{StaticResource Button}" Click="AdminLogoffButton_Click">
+                <Button.Triggers>
+                    <!-- Trigger dla naciśnięcia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+                    </EventTrigger>
+                    <!-- Trigger dla zwolnienia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+        </StackPanel>
+
+        <!-- Przyciski -->
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-28,375,0,0">
+            <TextBlock Text="Wyświetl:" VerticalAlignment="Center" Margin="0,0,10,0" FontSize="36"/>
+            <Button x:Name="AdminShowTrainersButton" Content="Trenerzy" Style="{StaticResource Button}" Click="AdminShowTrainersButton_Click">
+                <Button.Triggers>
+                    <!-- Trigger dla naciśnięcia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+                    </EventTrigger>
+                    <!-- Trigger dla zwolnienia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+            <Button x:Name="AdminShowDieticiansButton" Content="Dietetycy" Style="{StaticResource Button}" Click="AdminShowDieticiansButton_Click">
+                <Button.Triggers>
+                    <!-- Trigger dla naciśnięcia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+                    </EventTrigger>
+                    <!-- Trigger dla zwolnienia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+            <Button x:Name="AdminShowGymsButton" Content="Siłownie" Style="{StaticResource Button}" Click="AdminShowGymsButton_Click">
+                <Button.Triggers>
+                    <!-- Trigger dla naciśnięcia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+                    </EventTrigger>
+                    <!-- Trigger dla zwolnienia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+            <Button x:Name="AdminShowTrainingsButton" Content="Treningi" Style="{StaticResource Button}" Click="AdminShowTrainingsButton_Click">
+                <Button.Triggers>
+                    <!-- Trigger dla naciśnięcia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+                    </EventTrigger>
+                    <!-- Trigger dla zwolnienia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+            <Button x:Name="AdminShowDietsButton" Content="Diety" Style="{StaticResource Button}" Click="AdminShowDietsButton_Click">
+                <Button.Triggers>
+                    <!-- Trigger dla naciśnięcia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+                    </EventTrigger>
+                    <!-- Trigger dla zwolnienia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+            <Button x:Name="AdminShowAdminsDietsButton" Content="Administratorzy" Style="{StaticResource Button}" Click="AdminShowAdminsDietsButton_Click">
+                <Button.Triggers>
+                    <!-- Trigger dla naciśnięcia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+                    </EventTrigger>
+                    <!-- Trigger dla zwolnienia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+            <Button x:Name="AdminShowCashiersButton" Content="Kasjerzy" Style="{StaticResource Button}" Click="AdminShowCashiersButton_Click">
+                <Button.Triggers>
+                    <!-- Trigger dla naciśnięcia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+                    </EventTrigger>
+                    <!-- Trigger dla zwolnienia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+            <Button x:Name="AdminShowClientsButton" Content="Klienci" Style="{StaticResource Button}" Click="AdminShowClientsButton_Click">
+                <Button.Triggers>
+                    <!-- Trigger dla naciśnięcia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+                    </EventTrigger>
+                    <!-- Trigger dla zwolnienia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+            <Button x:Name="AdminShowUsersClientsButton" Content="Użytkownicy" Style="{StaticResource Button}" Click="AdminShowUsersClientsButton_Click">
+                <Button.Triggers>
+                    <!-- Trigger dla naciśnięcia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+                    </EventTrigger>
+                    <!-- Trigger dla zwolnienia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+        </StackPanel>
+
+        <!-- DataGrid dla wyświetlenia danych -->
+        <DataGrid Name="AdminPanelDataGrid" AutoGenerateColumns="True" Margin="25,468,25,25" RenderTransformOrigin="0.5,0.5" ColumnWidth="*" SelectionChanged="AdminPanelDataGrid_SelectionChanged">
+            <DataGrid.Resources>
+                <!-- Definicja stylu dla komórek DataGrid -->
+                <Style TargetType="DataGridCell">
+                    <Setter Property="TextBlock.TextAlignment" Value="Left"/>
+                    <!-- Tekst w komórkach będzie wyśrodkowany -->
+                    <Setter Property="TextBlock.FontSize" Value="28"/>
+                    <!-- Rozmiar czcionki -->
+                </Style>
+                <!-- Definicja stylu dla nagłówków kolumn -->
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <!-- Tekst w nagłówkach kolumn będzie wyśrodkowany -->
+                    <Setter Property="FontSize" Value="36"/>
+                    <!-- Zwiększenie rozmiaru czcionki nagłówków -->
+                </Style>
+            </DataGrid.Resources>
+            <DataGrid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </DataGrid.RenderTransform>
+        </DataGrid>
+
+    </Grid>
+</Window>

@@ -1,0 +1,191 @@
+﻿<Window x:Class="GymManagement.TrainerPanel"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:av="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="av"
+        Title="Panel Trenera" Background="#FFC5BFBF" Height="1000" Width="1700" ResizeMode="NoResize" Loaded="Window_Loaded">
+    <Window.Resources>
+        <!-- Animacja zmiany przezroczystości -->
+        <Storyboard x:Key="ButtonPressedAnimation">
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0.6" Duration="0:0:0.1"/>
+        </Storyboard>
+        <Storyboard x:Key="ButtonReleasedAnimation">
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.1"/>
+        </Storyboard>
+    </Window.Resources>
+    <Grid>
+        <!-- Nazwa firmy -->
+        <TextBlock Text="GymManagement Company" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="40" Margin="624,33,0,0"  TextAlignment="Center" RenderTransformOrigin="0.055,0.771"/>
+
+        <!-- Logo -->
+        <Image Source="./NewFolder1/logo.png" Grid.Row="0" Margin="5,0,1360,750"/>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="-20,20,20,0">
+            <Button x:Name="TrainerLogoffButton" Content="Wyloguj" Style="{StaticResource Button}" Click="TrainerLogoffButton_Click">
+                <Button.Triggers>
+                    <!-- Trigger dla naciśnięcia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+                    </EventTrigger>
+                    <!-- Trigger dla zwolnienia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+        </StackPanel>
+
+        <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="-20,100,20,0">
+            <TextBlock x:Name="TrainerImieTextBox" Margin="10" FontSize="26" Width="390" IsEnabled="False" Background="#FFC5BFBF" TextAlignment="Right"/>
+        </StackPanel>
+
+        <!-- Przyciski -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-28,290,0,0">
+            <TextBlock Text="Trening:" VerticalAlignment="Center" Margin="0,0,10,0" FontSize="36"/>
+            <Button x:Name="TrainerAddTrainingButton" Content="Dodaj" Style="{StaticResource Button}" Click="TrainerAddTrainingButton_Click">
+                <Button.Triggers>
+                    <!-- Trigger dla naciśnięcia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+                    </EventTrigger>
+                    <!-- Trigger dla zwolnienia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+
+            <Button x:Name="TrainerChangeTrainingButton" Content="Modyfikuj" Style="{StaticResource Button}" Click="TrainerChangeTrainingButton_Click">
+                <Button.Triggers>
+                    <!-- Trigger dla naciśnięcia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+                    </EventTrigger>
+                    <!-- Trigger dla zwolnienia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+
+            <Button x:Name="TrainerRemoveTrainingButton" Content="Usuń" Style="{StaticResource Button}" Click="TrainerRemoveTrainingButton_Click">
+                <Button.Triggers>
+                    <!-- Trigger dla naciśnięcia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+                    </EventTrigger>
+                    <!-- Trigger dla zwolnienia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-28,375,0,0">
+            <TextBlock Text="Wyświetl:" VerticalAlignment="Center" Margin="0,0,10,0" FontSize="36"/>
+            <Button x:Name="TrainerShowTrainingsButton" Content="Moje Treningi" Style="{StaticResource Button}" Click="TrainerShowTrainingsButton_Click">
+                <Button.Triggers>
+                    <!-- Trigger dla naciśnięcia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+                    </EventTrigger>
+                    <!-- Trigger dla zwolnienia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+            <Button x:Name="TrainerShowOldTrainingsButton" Content="Historyczne Treningi" Style="{StaticResource Button}" Click="TrainerShowOldTrainingsButton_Click">
+                <Button.Triggers>
+                    <!-- Trigger dla naciśnięcia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+                    </EventTrigger>
+                    <!-- Trigger dla zwolnienia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+            <Button Margin="50,0,0,0" Visibility="Hidden"/>
+            <Button x:Name="TrainerShowTrainersButton" Content="Trenerzy" Style="{StaticResource Button}" Click="TrainerShowTrainersButton_Click">
+                <Button.Triggers>
+                    <!-- Trigger dla naciśnięcia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+                    </EventTrigger>
+                    <!-- Trigger dla zwolnienia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+            <Button x:Name="TrainerShowDieticiansButton" Content="Dietetycy" Style="{StaticResource Button}" Click="TrainerShowDieticiansButton_Click">
+                <Button.Triggers>
+                    <!-- Trigger dla naciśnięcia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+                    </EventTrigger>
+                    <!-- Trigger dla zwolnienia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+            <Button x:Name="TrainerShowGymsButton" Content="Siłownie" Style="{StaticResource Button}" Click="TrainerShowGymsButton_Click">
+                <Button.Triggers>
+                    <!-- Trigger dla naciśnięcia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+                    </EventTrigger>
+                    <!-- Trigger dla zwolnienia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+            <Button x:Name="TrainerShowDietsButton" Content="Diety" Style="{StaticResource Button}" Click="TrainerShowDietsButton_Click">
+                <Button.Triggers>
+                    <!-- Trigger dla naciśnięcia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+                    </EventTrigger>
+                    <!-- Trigger dla zwolnienia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+        </StackPanel>
+
+        <DataGrid Name="TrainerPanelDataGrid" AutoGenerateColumns="True" Margin="25,468,25,25" RenderTransformOrigin="0.5,0.5" ColumnWidth="*" SelectionChanged="TrainerPanelDataGrid_SelectionChanged">
+            <DataGrid.Resources>
+                <!-- Definicja stylu dla komórek DataGrid -->
+                <Style TargetType="DataGridCell">
+                    <Setter Property="TextBlock.TextAlignment" Value="Left"/>
+                    <!-- Tekst w komórkach będzie wyśrodkowany -->
+                    <Setter Property="TextBlock.FontSize" Value="28"/>
+                    <!-- Rozmiar czcionki -->
+                </Style>
+                <!-- Definicja stylu dla nagłówków kolumn -->
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <!-- Tekst w nagłówkach kolumn będzie wyśrodkowany -->
+                    <Setter Property="FontSize" Value="36"/>
+                    <!-- Zwiększenie rozmiaru czcionki nagłówków -->
+                </Style>
+            </DataGrid.Resources>
+            <DataGrid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </DataGrid.RenderTransform>
+        </DataGrid>
+
+    </Grid>
+</Window>

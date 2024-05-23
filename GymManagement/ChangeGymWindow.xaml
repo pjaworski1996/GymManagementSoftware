@@ -1,0 +1,63 @@
+﻿<Window x:Class="GymManagement.ChangeGymWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:av="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="av"
+        Title="Dodaj Siłownię" Background="#FFC5BFBF" Height="850" Width="1600" ResizeMode="NoResize">
+
+    <Window.Resources>
+        <!-- Animacja zmiany przezroczystości -->
+        <Storyboard x:Key="ButtonPressedAnimation">
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0.6" Duration="0:0:0.1"/>
+        </Storyboard>
+        <Storyboard x:Key="ButtonReleasedAnimation">
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.1"/>
+        </Storyboard>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="GymManagement Company" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="40" Margin="879,57,0,0"  TextAlignment="Center"/>
+
+        <!-- Logo firmy -->
+        <Image Source="./NewFolder1/logo.png" Margin="50,28,1315,722"/>
+
+        <!-- Panel dodawania diety -->
+        <StackPanel Margin="316,400,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <TextBlock Text="Adres Siłowni*:" FontSize="27"/>
+            <TextBox x:Name="ChangeGymAddressTextBox" FontSize="27" Height="49" MaxLength="20" Width="555"/>
+        </StackPanel>
+
+        <!-- Przycisk Dodaj -->
+        <Button x:Name="ChangeGymChangeButton" Content="Modyfikuj" Style="{StaticResource Button}" HorizontalAlignment="Left"  Margin="1127,412,0,493" Grid.Row="0" Click="ChangeGymChangeButton_Click">
+            <Button.Triggers>
+                <!-- Trigger dla naciśnięcia przycisku -->
+                <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                    <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+                </EventTrigger>
+                <!-- Trigger dla zwolnienia przycisku -->
+                <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                    <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+                </EventTrigger>
+            </Button.Triggers>
+        </Button>
+
+        <!-- Przycisk Powrót -->
+        <Button x:Name="ChangeGymBack" Content="Powrót" Style="{StaticResource Button}" HorizontalAlignment="Center" Margin="0,678,0,0" Grid.Row="0" Height="80" VerticalAlignment="Top" Click="ChangeGymBack_Click">
+            <Button.Triggers>
+                <!-- Trigger dla naciśnięcia przycisku -->
+                <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                    <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+                </EventTrigger>
+                <!-- Trigger dla zwolnienia przycisku -->
+                <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                    <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+                </EventTrigger>
+            </Button.Triggers>
+        </Button>
+
+    </Grid>
+</Window>

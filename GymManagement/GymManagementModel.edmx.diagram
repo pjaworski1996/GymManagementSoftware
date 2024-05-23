@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="57fb2a8125644708aaaa892e0bda0714" Name="Diagram1">
+        <EntityTypeShape EntityType="GymManagementModel.Administratorzy" Width="1.5" PointX="5.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GymManagementModel.Dietetycy" Width="1.5" PointX="7.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GymManagementModel.Diety" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GymManagementModel.Karnety" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="GymManagementModel.Klienci" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GymManagementModel.PracownicyKasowi" Width="1.5" PointX="8.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GymManagementModel.Produkty" Width="1.5" PointX="0.75" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="GymManagementModel.PrzypisaneDiety" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="GymManagementModel.Silownie" Width="1.5" PointX="1.5" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GymManagementModel.Sprzety" Width="1.5" PointX="3.75" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GymManagementModel.Transakcje" Width="1.5" PointX="3" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GymManagementModel.Trenerzy" Width="1.5" PointX="1.5" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GymManagementModel.Treningi" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GymManagementModel.Uzytkownicy" Width="1.5" PointX="9.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GymManagementModel.WypozyczeniaSprzetu" Width="1.5" PointX="6" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="GymManagementModel.ZarezerwowaneTreningi" Width="1.5" PointX="6" PointY="6" IsExpanded="true" />
+        <AssociationConnector Association="GymManagementModel.FK__Przypisan__idDie__5FB337D6" ManuallyRouted="false" />
+        <AssociationConnector Association="GymManagementModel.FK__Karnety__IdKlien__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="GymManagementModel.FK__Przypisan__idKli__60A75C0F" ManuallyRouted="false" />
+        <AssociationConnector Association="GymManagementModel.FK__Transakcj__idKli__656C112C" ManuallyRouted="false" />
+        <AssociationConnector Association="GymManagementModel.FK__Wypozycze__idKli__6A30C649" ManuallyRouted="false" />
+        <AssociationConnector Association="GymManagementModel.FK__Zarezerwo__idKli__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="GymManagementModel.FK__Transakcj__idPro__6477ECF3" ManuallyRouted="false" />
+        <AssociationConnector Association="GymManagementModel.FK__Treningi__idSilo__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="GymManagementModel.FK__Wypozycze__idSpr__693CA210" ManuallyRouted="false" />
+        <AssociationConnector Association="GymManagementModel.FK__Treningi__idTren__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="GymManagementModel.FK__Zarezerwo__idTre__5BE2A6F2" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

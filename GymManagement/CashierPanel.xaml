@@ -1,0 +1,373 @@
+﻿<Window x:Class="GymManagement.CashierPanel"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:av="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GymManagement"
+        mc:Ignorable="av"
+        Title="Panel Kasjera" Background="#FFC5BFBF" Height="1200" Width="2500" ResizeMode="NoResize" Loaded="Window_Loaded">
+    <Window.Resources>
+        <!-- Animacja zmiany przezroczystości -->
+        <Storyboard x:Key="ButtonPressedAnimation">
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0.6" Duration="0:0:0.1"/>
+        </Storyboard>
+        <Storyboard x:Key="ButtonReleasedAnimation">
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.1"/>
+        </Storyboard>
+    </Window.Resources>
+    <Grid>
+        <!-- Nazwa firmy -->
+        <TextBlock Text="GymManagement Company" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="40" Margin="1157,47,0,0"  TextAlignment="Center" RenderTransformOrigin="0.055,0.771"/>
+
+        <!-- Logo -->
+        <Image Source="./NewFolder1/logo.png" Grid.Row="0" Margin="-41,47,2196,929"/>
+
+        <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="-20,100,20,0">
+            <TextBlock x:Name="CashierImieTextBox" Margin="10" FontSize="26" Width="390" IsEnabled="False" Background="#FFC5BFBF" TextAlignment="Right"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,260,20,0">
+            <Label Content="Imię Klienta:" FontSize="36" VerticalAlignment="Center"/>
+            <TextBox x:Name="CashierPanelClientImieTextBox" Margin="10" FontSize="46" Width="250" MaxLength="20"/>
+            <Label Content="Nazwisko Klienta:" FontSize="36" VerticalAlignment="Center"/>
+            <TextBox x:Name="CashierPanelClientNazwiskoTextBox" Margin="10" FontSize="46" Width="250" MaxLength="20"/>
+            <Label Content="Ilość:" FontSize="36" VerticalAlignment="Center"/>
+            <TextBox x:Name="CashierPanelIloscTextBox" Margin="10" FontSize="46" Width="250" MaxLength="20"/>
+            <Label Content="Cena karnetu za dzień:" FontSize="36" VerticalAlignment="Center"/>
+            <TextBox x:Name="CashierPanelMembershipCostPerDayTextBox" Margin="10" FontSize="46" Width="250" MaxLength="20"/>
+        </StackPanel>
+
+          <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="-20,20,20,0">
+      <Button x:Name="CashierLogoffButton" Content="Wyloguj" Style="{StaticResource Button}" Click="CashierLogoffButton_Click">
+          <Button.Triggers>
+              <!-- Trigger dla naciśnięcia przycisku -->
+              <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                  <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+              </EventTrigger>
+              <!-- Trigger dla zwolnienia przycisku -->
+              <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                  <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+              </EventTrigger>
+          </Button.Triggers>
+      </Button>
+  </StackPanel>
+
+      
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-28,340,0,0">
+            <TextBlock Text="Produkty:" VerticalAlignment="Center" Margin="0,0,10,0" FontSize="36"/>
+            <Button x:Name="CashierSellProductButton" Content="Sprzedaj" Style="{StaticResource Button}" Click="CashierSellProductButton_Click">
+                <Button.Triggers>
+                    <!-- Trigger dla naciśnięcia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+                    </EventTrigger>
+                    <!-- Trigger dla zwolnienia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+            <Button x:Name="CashierAddProductButton" Content="Dodaj" Style="{StaticResource Button}" Click="CashierAddProductButton_Click">
+                <Button.Triggers>
+                    <!-- Trigger dla naciśnięcia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+                    </EventTrigger>
+                    <!-- Trigger dla zwolnienia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+            <Button x:Name="CashierChangeProductButton" Content="Modyfikuj" Style="{StaticResource Button}" Click="CashierChangeProductButton_Click">
+                <Button.Triggers>
+                    <!-- Trigger dla naciśnięcia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+                    </EventTrigger>
+                    <!-- Trigger dla zwolnienia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+            <Button x:Name="CashierRemoveProductButton" Content="Usuń" Style="{StaticResource Button}" Click="CashierRemoveProductButton_Click">
+                <Button.Triggers>
+                    <!-- Trigger dla naciśnięcia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+                    </EventTrigger>
+                    <!-- Trigger dla zwolnienia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+            <Button x:Name="CashierShowProductsButton" Content="Wyświetl" Style="{StaticResource Button}" Click="CashierShowProductsButton_Click">
+                <Button.Triggers>
+                    <!-- Trigger dla naciśnięcia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+                    </EventTrigger>
+                    <!-- Trigger dla zwolnienia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+
+        </StackPanel>
+
+
+        <!-- Przyciski -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-28,420,0,0">
+            <TextBlock Text="Sprzęty:" VerticalAlignment="Center" Margin="0,0,10,0" FontSize="36"/>
+            <Button x:Name="CashierRentEquipmentButton" Content="Wypożycz" Style="{StaticResource Button}" Click="CashierRentEquipmentButton_Click">
+                <Button.Triggers>
+                    <!-- Trigger dla naciśnięcia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+                    </EventTrigger>
+                    <!-- Trigger dla zwolnienia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+            <Button x:Name="CashierAddEquipmentButton" Content="Dodaj" Style="{StaticResource Button}" Click="CashierAddEquipmentButton_Click">
+                <Button.Triggers>
+                    <!-- Trigger dla naciśnięcia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+                    </EventTrigger>
+                    <!-- Trigger dla zwolnienia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+            <Button x:Name="CashierChangeEquipmentButton" Content="Modyfikuj" Style="{StaticResource Button}" Click="CashierChangeEquipmentButton_Click">
+                <Button.Triggers>
+                    <!-- Trigger dla naciśnięcia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+                    </EventTrigger>
+                    <!-- Trigger dla zwolnienia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+            <Button x:Name="CashierRemoveEquipmentButton" Content="Usuń" Style="{StaticResource Button}" Click="CashierRemoveEquipmentButton_Click">
+                <Button.Triggers>
+                    <!-- Trigger dla naciśnięcia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+                    </EventTrigger>
+                    <!-- Trigger dla zwolnienia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+            <Button x:Name="CashierShowEquipmentButton" Content="Wyświetl" Style="{StaticResource Button}" Click="CashierShowEquipmentButton_Click">
+                <Button.Triggers>
+                    <!-- Trigger dla naciśnięcia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+                    </EventTrigger>
+                    <!-- Trigger dla zwolnienia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+            <Button Margin="100,0,0,0" Visibility="Hidden"/>
+            <TextBlock Text="Karnety:" VerticalAlignment="Center" Margin="0,0,10,0" FontSize="36"/>
+            <Button x:Name="CashierSellMembershipButton" Content="Sprzedaj" Style="{StaticResource Button}" Click="CashierSellMembershipButton_Click">
+                <Button.Triggers>
+                    <!-- Trigger dla naciśnięcia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+                    </EventTrigger>
+                    <!-- Trigger dla zwolnienia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+            <Button x:Name="CashierShowMembershipsButton" Content="Aktywne" Style="{StaticResource Button}" Click="CashierShowMembershipsButton_Click">
+                <Button.Triggers>
+                    <!-- Trigger dla naciśnięcia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+                    </EventTrigger>
+                    <!-- Trigger dla zwolnienia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+            <Button x:Name="CashierShowOldMembershipsButton" Content="Nieaktywne" Style="{StaticResource Button}" Click="CashierShowOldMembershipsButton_Click">
+                <Button.Triggers>
+                    <!-- Trigger dla naciśnięcia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+                    </EventTrigger>
+                    <!-- Trigger dla zwolnienia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-28,500,0,0">
+            <TextBlock Text="Transakcje:" VerticalAlignment="Center" Margin="0,0,10,0" FontSize="36"/>
+
+            <Button x:Name="CashierShowTransactionsButton" Content="Dzisiejsze" Style="{StaticResource Button}" Click="CashierShowTransactionsButton_Click">
+                <Button.Triggers>
+                    <!-- Trigger dla naciśnięcia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+                    </EventTrigger>
+                    <!-- Trigger dla zwolnienia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+            <Button x:Name="CashierShowOldTransactionsButton" Content="Archiwalne" Style="{StaticResource Button}" Click="CashierShowOldTransactionsButton_Click">
+                <Button.Triggers>
+                    <!-- Trigger dla naciśnięcia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+                    </EventTrigger>
+                    <!-- Trigger dla zwolnienia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+            <Button Margin="100,0,0,0" Visibility="Hidden"/>
+            <TextBlock Text="Wypożyczenia:" VerticalAlignment="Center" Margin="0,0,10,0" FontSize="36"/>
+            <Button x:Name="CashierShowRentedEquipmentButton" Content="Dzisiejsze" Style="{StaticResource Button}" Click="CashierShowRentedEquipmentButton_Click">
+                <Button.Triggers>
+                    <!-- Trigger dla naciśnięcia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+                    </EventTrigger>
+                    <!-- Trigger dla zwolnienia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+
+
+            <Button x:Name="CashierShowOldRentedEquipmentButton" Content="Archiwalne" Style="{StaticResource Button}" Click="CashierShowOldRentedEquipmentButton_Click">
+                <Button.Triggers>
+                    <!-- Trigger dla naciśnięcia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+                    </EventTrigger>
+                    <!-- Trigger dla zwolnienia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-28,580,0,0">
+            <TextBlock Text="Wyświetl:" VerticalAlignment="Center" Margin="0,0,10,0" FontSize="36"/>
+            <Button x:Name="CashierShowTrainersButton" Content="Trenerzy" Style="{StaticResource Button}" Click="CashierShowTrainersButton_Click">
+                <Button.Triggers>
+                    <!-- Trigger dla naciśnięcia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+                    </EventTrigger>
+                    <!-- Trigger dla zwolnienia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+            <Button x:Name="CashierShowDieticiansButton" Content="Dietetycy" Style="{StaticResource Button}" Click="CashierShowDieticiansButton_Click">
+                <Button.Triggers>
+                    <!-- Trigger dla naciśnięcia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+                    </EventTrigger>
+                    <!-- Trigger dla zwolnienia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+            <Button x:Name="CashierShowGymsButton" Content="Siłownie" Style="{StaticResource Button}" Click="CashierShowGymsButton_Click">
+                <Button.Triggers>
+                    <!-- Trigger dla naciśnięcia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+                    </EventTrigger>
+                    <!-- Trigger dla zwolnienia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+            <Button x:Name="CashierShowTrainingsButton" Content="Treningi" Style="{StaticResource Button}" Click="CashierShowTrainingsButton_Click">
+                <Button.Triggers>
+                    <!-- Trigger dla naciśnięcia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+                    </EventTrigger>
+                    <!-- Trigger dla zwolnienia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+            <Button x:Name="CashierShowDietsButton" Content="Diety" Style="{StaticResource Button}" Click="CashierShowDietsButton_Click">
+                <Button.Triggers>
+                    <!-- Trigger dla naciśnięcia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseDown">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonPressedAnimation}"/>
+                    </EventTrigger>
+                    <!-- Trigger dla zwolnienia przycisku -->
+                    <EventTrigger RoutedEvent="Button.PreviewMouseUp">
+                        <BeginStoryboard Storyboard="{StaticResource ButtonReleasedAnimation}"/>
+                    </EventTrigger>
+                </Button.Triggers>
+            </Button>
+        </StackPanel>
+
+        
+
+        <DataGrid Name="CashierPanelDataGrid" AutoGenerateColumns="True" Margin="25,665,25,25" RenderTransformOrigin="0.5,0.5" ColumnWidth="*" SelectionChanged="CashierPanelDataGrid_SelectionChanged" >
+            <DataGrid.Resources>
+                <!-- Definicja stylu dla komórek DataGrid -->
+                <Style TargetType="DataGridCell">
+                    <Setter Property="TextBlock.TextAlignment" Value="Left"/>
+                    <!-- Tekst w komórkach będzie wyśrodkowany -->
+                    <Setter Property="TextBlock.FontSize" Value="28"/>
+                    <!-- Rozmiar czcionki -->
+                </Style>
+                <!-- Definicja stylu dla nagłówków kolumn -->
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <!-- Tekst w nagłówkach kolumn będzie wyśrodkowany -->
+                    <Setter Property="FontSize" Value="36"/>
+                    <!-- Zwiększenie rozmiaru czcionki nagłówków -->
+                </Style>
+            </DataGrid.Resources>
+            <DataGrid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </DataGrid.RenderTransform>
+        </DataGrid>
+
+    </Grid>
+</Window>
