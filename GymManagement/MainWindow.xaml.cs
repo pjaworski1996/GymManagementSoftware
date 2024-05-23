@@ -26,7 +26,7 @@ namespace GymManagement
                 switch (userRole)
                 {
                     case "Klient":
-                        message = "Witaj Kliencie XDDDDDDD! Zostałeś pomyślnie zalogowany.";
+                        message = "Witaj Kliencie! Zostałeś pomyślnie zalogowany.";
                         ClientPanel NewClientWindow = new ClientPanel(username);
                         NewClientWindow.Show();
                         Close();
